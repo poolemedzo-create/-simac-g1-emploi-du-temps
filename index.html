@@ -1,1225 +1,586 @@
-
+```html
 <!DOCTYPE html>
 <html lang="fr">
 
 <head>
-
     <meta charset="UTF-8">
-
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>SIMAC G1 | Emploi du temps</title>
 
-
     <style>
-
-        /* =====================================================
-           RESET
-        ===================================================== */
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-
         html {
             scroll-behavior: smooth;
         }
 
-
         body {
-            font-family:
-                "Segoe UI",
-                Inter,
-                Arial,
-                sans-serif;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    #f4f7ff 0%,
-                    #eef2ff 50%,
-                    #f8faff 100%
-                );
-
+            font-family: "Segoe UI", Inter, Arial, sans-serif;
+            background: linear-gradient(135deg, #f4f7ff 0%, #eef2ff 50%, #f8faff 100%);
             color: #172033;
-
             min-height: 100vh;
         }
 
-
-        /* =====================================================
-           HEADER
-        ===================================================== */
-
         header {
-
             position: relative;
-
-            padding:
-                65px
-                25px
-                100px;
-
+            padding: 65px 25px 100px;
             color: white;
-
             overflow: hidden;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    #4338ca,
-                    #6366f1,
-                    #7c3aed
-                );
+            background: linear-gradient(135deg, #4338ca, #6366f1, #7c3aed);
         }
 
-
         header::before {
-
             content: "";
-
             position: absolute;
-
             width: 450px;
             height: 450px;
-
             border-radius: 50%;
-
-            background:
-                rgba(255,255,255,0.08);
-
+            background: rgba(255,255,255,0.08);
             top: -250px;
             right: -100px;
         }
 
-
         header::after {
-
             content: "";
-
             position: absolute;
-
             width: 300px;
             height: 300px;
-
             border-radius: 50%;
-
-            background:
-                rgba(255,255,255,0.06);
-
+            background: rgba(255,255,255,0.06);
             bottom: -200px;
             left: 5%;
         }
 
-
         .header-content {
-
             max-width: 1200px;
-
             margin: auto;
-
             position: relative;
-
             z-index: 2;
         }
 
-
         .logo {
-
             display: inline-flex;
-
             align-items: center;
-
             gap: 10px;
-
-            padding:
-                10px
-                18px;
-
+            padding: 10px 18px;
             margin-bottom: 22px;
-
             border-radius: 50px;
-
-            background:
-                rgba(255,255,255,0.15);
-
-            border:
-                1px solid
-                rgba(255,255,255,0.18);
-
-            backdrop-filter:
-                blur(12px);
-
+            background: rgba(255,255,255,0.15);
+            border: 1px solid rgba(255,255,255,0.18);
+            backdrop-filter: blur(12px);
             font-size: 15px;
-
             font-weight: 700;
-
             letter-spacing: 1px;
         }
 
-
         .logo-icon {
-
             font-size: 21px;
         }
 
-
         h1 {
-
             font-size: 48px;
-
             font-weight: 800;
-
             letter-spacing: -1px;
-
             margin-bottom: 15px;
         }
 
-
         .subtitle {
-
             max-width: 760px;
-
             font-size: 17px;
-
             line-height: 1.7;
-
-            color:
-                rgba(255,255,255,0.86);
+            color: rgba(255,255,255,0.86);
         }
 
-
-        /* =====================================================
-           CONTENEUR PRINCIPAL
-        ===================================================== */
-
         .container {
-
             max-width: 1200px;
-
-            margin:
-                -55px
-                auto
-                60px;
-
-            padding:
-                0
-                25px;
-
+            margin: -55px auto 60px;
+            padding: 0 25px;
             position: relative;
-
             z-index: 5;
         }
 
-
-        /* =====================================================
-           INFORMATIONS
-        ===================================================== */
-
         .info-grid {
-
             display: grid;
-
-            grid-template-columns:
-                repeat(3, 1fr);
-
+            grid-template-columns: repeat(3, 1fr);
             gap: 20px;
-
             margin-bottom: 25px;
         }
 
-
         .info-card {
-
-            background:
-                rgba(255,255,255,0.96);
-
-            border:
-                1px solid
-                rgba(226,232,240,0.8);
-
+            background: rgba(255,255,255,0.96);
+            border: 1px solid rgba(226,232,240,0.8);
             border-radius: 22px;
-
             padding: 23px;
-
             display: flex;
-
             align-items: center;
-
             gap: 17px;
-
-            box-shadow:
-                0 15px 40px
-                rgba(31,41,55,0.08);
-
-            transition:
-                transform .3s ease,
-                box-shadow .3s ease;
+            box-shadow: 0 15px 40px rgba(31,41,55,0.08);
+            transition: transform .3s ease, box-shadow .3s ease;
         }
-
 
         .info-card:hover {
-
-            transform:
-                translateY(-7px);
-
-            box-shadow:
-                0 20px 45px
-                rgba(79,70,229,0.15);
+            transform: translateY(-7px);
+            box-shadow: 0 20px 45px rgba(79,70,229,0.15);
         }
 
-
         .info-icon {
-
             width: 58px;
             height: 58px;
-
             flex-shrink: 0;
-
             display: flex;
-
             align-items: center;
-
             justify-content: center;
-
             border-radius: 17px;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    #eef2ff,
-                    #e0e7ff
-                );
-
+            background: linear-gradient(135deg, #eef2ff, #e0e7ff);
             font-size: 27px;
         }
 
-
         .info-card small {
-
             display: block;
-
             color: #94a3b8;
-
             font-size: 12px;
-
             margin-bottom: 5px;
         }
 
-
         .info-card strong {
-
             font-size: 17px;
-
             color: #1e293b;
         }
 
-
-        /* =====================================================
-           PLANNING
-        ===================================================== */
-
         .schedule {
-
-            background:
-                rgba(255,255,255,0.97);
-
-            border:
-                1px solid
-                rgba(226,232,240,0.9);
-
+            background: rgba(255,255,255,0.97);
+            border: 1px solid rgba(226,232,240,0.9);
             border-radius: 25px;
-
             padding: 30px;
-
-            box-shadow:
-                0 18px 50px
-                rgba(31,41,55,0.08);
+            box-shadow: 0 18px 50px rgba(31,41,55,0.08);
         }
 
-
         .schedule-header {
-
             display: flex;
-
-            justify-content:
-                space-between;
-
+            justify-content: space-between;
             align-items: center;
-
             margin-bottom: 25px;
         }
 
-
         .schedule-header h2 {
-
             font-size: 25px;
-
             font-weight: 750;
         }
 
-
         .badge {
-
-            padding:
-                9px
-                17px;
-
+            padding: 9px 17px;
             border-radius: 50px;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    #eef2ff,
-                    #e0e7ff
-                );
-
+            background: linear-gradient(135deg, #eef2ff, #e0e7ff);
             color: #4f46e5;
-
             font-size: 13px;
-
             font-weight: 700;
         }
 
-
-        /* =====================================================
-           TABLEAU DESKTOP
-        ===================================================== */
-
         .table-wrapper {
-
             width: 100%;
-
             overflow-x: auto;
-
             border-radius: 18px;
-
             scrollbar-width: thin;
         }
 
-
         table {
-
             width: 100%;
-
             min-width: 950px;
-
-            border-collapse:
-                separate;
-
-            border-spacing:
-                7px;
+            border-collapse: separate;
+            border-spacing: 7px;
         }
-
 
         th {
-
-            padding:
-                13px
-                8px;
-
+            padding: 13px 8px;
             color: #64748b;
-
             font-size: 13px;
-
             font-weight: 700;
-
             text-align: center;
         }
-
 
         td {
-
             min-height: 65px;
-
-            padding:
-                12px
-                8px;
-
+            padding: 12px 8px;
             text-align: center;
-
             border-radius: 15px;
-
             font-size: 13px;
-
-            transition:
-                transform .25s ease,
-                box-shadow .25s ease;
+            transition: transform .25s ease, box-shadow .25s ease;
         }
 
-
-        /* Horaires */
-
         .time {
-
             width: 100px;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    #f8fafc,
-                    #f1f5f9
-                );
-
+            background: linear-gradient(135deg, #f8fafc, #f1f5f9);
             color: #64748b;
-
             font-size: 12px;
-
             font-weight: 750;
         }
 
-
-        /* Matières */
-
         .subject {
-
-            background:
-                linear-gradient(
-                    135deg,
-                    #eef2ff,
-                    #e0e7ff
-                );
-
-            border:
-                1px solid
-                #dbe4ff;
-
+            background: linear-gradient(135deg, #eef2ff, #e0e7ff);
+            border: 1px solid #dbe4ff;
             color: #3730a3;
-
             font-weight: 650;
-
             line-height: 1.45;
-
             cursor: pointer;
         }
-
 
         .subject:hover {
-
-            transform:
-                translateY(-4px);
-
-            box-shadow:
-                0 10px 25px
-                rgba(79,70,229,0.14);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(79,70,229,0.14);
         }
 
-
-        /* Travail de groupe */
-
         .group {
-
-            background:
-                linear-gradient(
-                    135deg,
-                    #ecfdf5,
-                    #d1fae5
-                );
-
-            border:
-                1px solid
-                #c7f3dd;
-
+            background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+            border: 1px solid #c7f3dd;
             color: #047857;
-
             font-weight: 650;
-
             line-height: 1.45;
-
             cursor: pointer;
         }
 
-
         .group:hover {
-
-            transform:
-                translateY(-4px);
-
-            box-shadow:
-                0 10px 25px
-                rgba(16,185,129,0.14);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(16,185,129,0.14);
         }
 
-
-        /* Libre */
-
         .free {
-
-            background:
-                #fafbfc;
-
-            border:
-                1px dashed
-                #e2e8f0;
-
-            color:
-                #a7b0bf;
-
+            background: #fafbfc;
+            border: 1px dashed #e2e8f0;
+            color: #a7b0bf;
             font-size: 11px;
         }
 
-
-        /* =====================================================
-           LÉGENDE
-        ===================================================== */
-
         .legend {
-
             display: flex;
-
             flex-wrap: wrap;
-
             gap: 25px;
-
             margin-top: 22px;
-
             padding-top: 20px;
-
-            border-top:
-                1px solid
-                #edf0f5;
+            border-top: 1px solid #edf0f5;
         }
 
-
         .legend-item {
-
             display: flex;
-
             align-items: center;
-
             gap: 8px;
-
             font-size: 12px;
-
             color: #64748b;
         }
 
-
         .dot {
-
             width: 11px;
             height: 11px;
-
             border-radius: 50%;
         }
-
 
         .dot-subject {
             background: #6366f1;
         }
 
-
         .dot-group {
             background: #10b981;
         }
-
 
         .dot-free {
             background: #cbd5e1;
         }
 
-
-        /* =====================================================
-           VERSION MOBILE
-        ===================================================== */
-
         .mobile-schedule {
-
             display: none;
         }
 
-
-        /* =====================================================
-           FOOTER
-        ===================================================== */
-
         footer {
-
             text-align: center;
-
             color: #94a3b8;
-
             font-size: 12px;
-
             margin-top: 25px;
         }
 
-
-        /* =====================================================
-           TABLETTE
-        ===================================================== */
-
         @media (max-width: 900px) {
-
             .info-grid {
-
-                grid-template-columns:
-                    repeat(2, 1fr);
+                grid-template-columns: repeat(2, 1fr);
             }
 
             .info-card:last-child {
-
-                grid-column:
-                    1 / -1;
+                grid-column: 1 / -1;
             }
 
             h1 {
-
                 font-size: 40px;
             }
         }
 
-
-        /* =====================================================
-           MOBILE
-        ===================================================== */
-
         @media (max-width: 650px) {
-
             body {
                 background: #f5f7ff;
             }
 
-
             header {
-
-                padding:
-                    40px
-                    18px
-                    75px;
+                padding: 40px 18px 75px;
             }
-
 
             h1 {
-
                 font-size: 31px;
-
-                letter-spacing:
-                    -0.5px;
+                letter-spacing: -0.5px;
             }
 
-
             .subtitle {
-
                 font-size: 14px;
-
                 line-height: 1.6;
             }
 
-
             .container {
-
-                margin-top:
-                    -35px;
-
-                padding:
-                    0
-                    12px;
+                margin-top: -35px;
+                padding: 0 12px;
             }
 
-
-            /* Informations */
-
             .info-grid {
-
-                grid-template-columns:
-                    1fr;
-
+                grid-template-columns: 1fr;
                 gap: 12px;
             }
 
-
             .info-card:last-child {
-
-                grid-column:
-                    auto;
+                grid-column: auto;
             }
 
-
             .info-card {
-
                 padding: 17px;
-
                 border-radius: 18px;
             }
 
-
             .info-icon {
-
                 width: 48px;
                 height: 48px;
-
                 font-size: 22px;
             }
 
-
-            /* Planning */
-
             .schedule {
-
-                padding:
-                    18px;
-
+                padding: 18px;
                 border-radius: 20px;
             }
 
-
             .schedule-header {
-
-                align-items:
-                    flex-start;
-
+                align-items: flex-start;
                 gap: 12px;
             }
 
-
             .schedule-header h2 {
-
                 font-size: 19px;
             }
 
-
             .badge {
-
-                padding:
-                    7px
-                    12px;
-
+                padding: 7px 12px;
                 font-size: 11px;
             }
 
-
-            /*
-              On cache le tableau
-              sur téléphone
-            */
-
             .table-wrapper {
-
                 display: none;
             }
 
-
-            /*
-              On affiche les cartes
-            */
-
             .mobile-schedule {
-
                 display: block;
             }
 
-
-            /* Jour */
-
             .day {
-
                 margin-bottom: 18px;
-
                 padding-bottom: 18px;
-
-                border-bottom:
-                    1px solid
-                    #edf0f5;
+                border-bottom: 1px solid #edf0f5;
             }
 
-
             .day:last-child {
-
                 margin-bottom: 0;
-
                 padding-bottom: 0;
-
                 border-bottom: none;
             }
 
-
             .day-title {
-
                 display: flex;
-
-                justify-content:
-                    space-between;
-
+                justify-content: space-between;
                 align-items: center;
-
                 margin-bottom: 10px;
             }
 
-
             .day-title h3 {
-
                 font-size: 16px;
-
                 color: #1e293b;
             }
 
-
             .day-number {
-
                 width: 28px;
                 height: 28px;
-
                 display: flex;
-
                 align-items: center;
-
                 justify-content: center;
-
                 border-radius: 9px;
-
                 background: #eef2ff;
-
                 color: #4f46e5;
-
                 font-size: 11px;
-
                 font-weight: 700;
             }
 
-
-            /* Créneau */
-
             .mobile-item {
-
                 display: flex;
-
                 gap: 10px;
-
                 align-items: stretch;
-
                 margin-bottom: 9px;
             }
 
-
             .mobile-time {
-
                 width: 75px;
-
                 flex-shrink: 0;
-
                 display: flex;
-
                 align-items: center;
-
                 justify-content: center;
-
                 text-align: center;
-
                 border-radius: 11px;
-
                 background: #f8fafc;
-
                 color: #64748b;
-
                 font-size: 10px;
-
                 font-weight: 700;
-
                 padding: 8px;
             }
 
-
             .mobile-content {
-
                 flex: 1;
-
-                padding:
-                    11px
-                    13px;
-
+                padding: 11px 13px;
                 border-radius: 12px;
-
                 font-size: 12px;
-
                 line-height: 1.4;
             }
 
-
             .mobile-content.subject {
-
-                background:
-                    linear-gradient(
-                        135deg,
-                        #eef2ff,
-                        #e0e7ff
-                    );
-
-                border:
-                    1px solid
-                    #dbe4ff;
-
+                background: linear-gradient(135deg, #eef2ff, #e0e7ff);
+                border: 1px solid #dbe4ff;
                 color: #3730a3;
             }
 
-
             .mobile-content.group {
-
-                background:
-                    linear-gradient(
-                        135deg,
-                        #ecfdf5,
-                        #d1fae5
-                    );
-
-                border:
-                    1px solid
-                    #c7f3dd;
-
+                background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+                border: 1px solid #c7f3dd;
                 color: #047857;
             }
 
-
             .mobile-content.free {
-
                 background: #fafbfc;
-
-                border:
-                    1px dashed
-                    #e2e8f0;
-
+                border: 1px dashed #e2e8f0;
                 color: #a7b0bf;
             }
-
         }
 
-
-        /* =====================================================
-           PETIT MOBILE
-        ===================================================== */
-
         @media (max-width: 380px) {
-
             h1 {
-
                 font-size: 27px;
             }
 
-
             .mobile-time {
-
                 width: 68px;
-
                 font-size: 9px;
             }
 
-
             .mobile-content {
-
                 font-size: 11px;
             }
         }
-
     </style>
-
 </head>
-
 
 <body>
 
-
-    <!-- =====================================================
-         HEADER
-    ===================================================== -->
-
     <header>
-
         <div class="header-content">
 
             <div class="logo">
-
-                <span class="logo-icon">
-                    🎓
-                </span>
-
-                <span>
-                    SIMAC
-                </span>
-
+                <span class="logo-icon">🎓</span>
+                <span>SIMAC</span>
             </div>
 
-
-            <h1>
-                Emploi du temps
-            </h1>
-
+            <h1>Emploi du temps</h1>
 
             <p class="subtitle">
-
                 Sciences Informatiques et Mathématiques
                 Appliquées à la Cybersécurité
-
             </p>
 
         </div>
-
     </header>
 
 
-
-    <!-- =====================================================
-         CONTENU
-    ===================================================== -->
-
     <main class="container">
-
-
-        <!-- INFORMATIONS -->
 
         <section class="info-grid">
 
-
             <div class="info-card">
-
-                <div class="info-icon">
-                    👥
-                </div>
+                <div class="info-icon">👥</div>
 
                 <div>
-
-                    <small>
-                        Groupe
-                    </small>
-
-                    <strong>
-                        Groupe 1
-                    </strong>
-
+                    <small>Groupe</small>
+                    <strong>Groupe 1</strong>
                 </div>
-
             </div>
 
 
-
             <div class="info-card">
-
-                <div class="info-icon">
-                    📚
-                </div>
+                <div class="info-icon">📚</div>
 
                 <div>
-
-                    <small>
-                        Filière
-                    </small>
-
-                    <strong>
-                        SIMAC
-                    </strong>
-
+                    <small>Filière</small>
+                    <strong>SIMAC</strong>
                 </div>
-
             </div>
 
 
-
             <div class="info-card">
-
-                <div class="info-icon">
-                    📅
-                </div>
+                <div class="info-icon">📅</div>
 
                 <div>
-
-                    <small>
-                        Année universitaire
-                    </small>
-
-                    <strong>
-                        2025 - 2026
-                    </strong>
-
+                    <small>Année universitaire</small>
+                    <strong>2025 - 2026</strong>
                 </div>
-
             </div>
-
 
         </section>
 
 
-
-        <!-- =================================================
-             PLANNING
-        ================================================== -->
-
         <section class="schedule">
-
 
             <div class="schedule-header">
 
-                <h2>
-                    📅 Planning de la semaine
-                </h2>
+                <h2>📅 Planning de la semaine</h2>
 
-                <span class="badge">
-                    G1
-                </span>
+                <span class="badge">G1</span>
 
             </div>
 
 
-
-            <!-- =================================================
-                 DESKTOP TABLE
-            ================================================== -->
+            <!-- =========================
+                 VERSION PC
+            ========================== -->
 
             <div class="table-wrapper">
 
-
                 <table>
 
-
                     <thead>
-
                         <tr>
-
-                            <th>
-                                Horaire
-                            </th>
-
-                            <th>
-                                Lundi
-                            </th>
-
-                            <th>
-                                Mardi
-                            </th>
-
-                            <th>
-                                Mercredi
-                            </th>
-
-                            <th>
-                                Jeudi
-                            </th>
-
-                            <th>
-                                Vendredi
-                            </th>
-
-                            <th>
-                                Samedi
-                            </th>
-
-                            <th>
-                                Dimanche
-                            </th>
-
+                            <th>Horaire</th>
+                            <th>Lundi</th>
+                            <th>Mardi</th>
+                            <th>Mercredi</th>
+                            <th>Jeudi</th>
+                            <th>Vendredi</th>
+                            <th>Samedi</th>
+                            <th>Dimanche</th>
                         </tr>
-
                     </thead>
-
-
 
                     <tbody>
 
-
-                        <!-- 08 - 10 -->
-
+                        <!-- 08h - 10h -->
                         <tr>
 
                             <td class="time">
@@ -1231,54 +592,38 @@
                                 Appliquée
                             </td>
 
-                            <td class="free">
-                                Libre
-                            </td>
+                            <td class="free">Libre</td>
 
                             <td class="subject">
                                 Analyse 1
                             </td>
 
-                            <td class="free">
-                                Libre
-                            </td>
+                            <td class="free">Libre</td>
 
-                            <td class="free">
-                                Libre
-                            </td>
+                            <td class="free">Libre</td>
 
-                            <td class="free">
-                                Libre
-                            </td>
+                            <td class="free">Libre</td>
 
-                            <td class="free">
-                                Libre
-                            </td>
+                            <td class="free">Libre</td>
 
                         </tr>
 
 
-
-                        <!-- 09 - 11 -->
-
+                        <!-- 09h - 11h -->
                         <tr>
 
                             <td class="time">
                                 09h - 11h
                             </td>
 
-                            <td class="free">
-                                Libre
-                            </td>
+                            <td class="free">Libre</td>
 
                             <td class="subject">
                                 Architecture des<br>
                                 Ordinateurs 1
                             </td>
 
-                            <td class="free">
-                                Libre
-                            </td>
+                            <td class="free">Libre</td>
 
                             <td class="subject">
                                 Introduction à la<br>
@@ -1290,109 +635,75 @@
                                 d'Exploitation 1
                             </td>
 
-                            <td class="free">
-                                Libre
-                            </td>
+                            <td class="free">Libre</td>
 
-                            <td class="free">
-                                Libre
-                            </td>
+                            <td class="free">Libre</td>
 
                         </tr>
 
 
-
-                        <!-- 10 - 12 -->
-
+                        <!-- 10h - 12h -->
                         <tr>
 
                             <td class="time">
                                 10h - 12h
                             </td>
 
-                            <td class="free">
-                                Libre
-                            </td>
+                            <td class="free">Libre</td>
 
-                            <td class="free">
-                                Libre
-                            </td>
+                            <td class="free">Libre</td>
 
                             <td class="subject">
                                 Introduction à la<br>
                                 Cybersécurité
                             </td>
 
-                            <td class="free">
-                                Libre
-                            </td>
+                            <td class="free">Libre</td>
 
-                            <td class="free">
-                                Libre
-                            </td>
+                            <td class="free">Libre</td>
 
-                            <td class="free">
-                                Libre
-                            </td>
+                            <td class="free">Libre</td>
 
-                            <td class="free">
-                                Libre
-                            </td>
+                            <td class="free">Libre</td>
 
                         </tr>
 
 
-
-                        <!-- 15 - 17 -->
-
+                        <!-- 15h - 17h -->
                         <tr>
 
                             <td class="time">
                                 15h - 17h
                             </td>
 
-                            <td class="subject">
-                                Algorithme
-                            </td>
-
                             <td class="free">
                                 Libre
                             </td>
 
-                            <td class="free">
-                                Libre
-                            </td>
+                            <td class="free">Libre</td>
 
-                            <td class="free">
-                                Libre
-                            </td>
+                            <td class="free">Libre</td>
 
-                            <td class="free">
-                                Libre
-                            </td>
+                            <td class="free">Libre</td>
 
-                            <td class="free">
-                                Libre
-                            </td>
+                            <td class="free">Libre</td>
 
-                            <td class="free">
-                                Libre
-                            </td>
+                            <td class="free">Libre</td>
+
+                            <td class="free">Libre</td>
 
                         </tr>
 
 
-
-                        <!-- 17 - 19 -->
-
+                        <!-- 17h - 19h -->
                         <tr>
 
                             <td class="time">
                                 17h - 19h
                             </td>
 
-                            <td class="free">
-                                Libre
+                            <td class="subject">
+                                Algorithme 1
                             </td>
 
                             <td class="subject">
@@ -1425,47 +736,34 @@
                         </tr>
 
 
-
-                        <!-- 20 - 22 -->
-
+                        <!-- 20h - 22h -->
                         <tr>
 
                             <td class="time">
                                 20h - 22h
                             </td>
 
-                            <td class="free">
-                                Libre
-                            </td>
+                            <td class="free">Libre</td>
 
                             <td class="group">
                                 Travail de groupe<br>
                                 via Meet
                             </td>
 
-                            <td class="free">
-                                Libre
-                            </td>
+                            <td class="free">Libre</td>
 
                             <td class="group">
                                 Travail de groupe<br>
                                 via Meet
                             </td>
 
-                            <td class="free">
-                                Libre
-                            </td>
+                            <td class="free">Libre</td>
 
-                            <td class="free">
-                                Libre
-                            </td>
+                            <td class="free">Libre</td>
 
-                            <td class="free">
-                                Libre
-                            </td>
+                            <td class="free">Libre</td>
 
                         </tr>
-
 
                     </tbody>
 
@@ -1474,10 +772,9 @@
             </div>
 
 
-
-            <!-- =================================================
+            <!-- =========================
                  VERSION MOBILE
-            ================================================== -->
+            ========================== -->
 
             <div class="mobile-schedule">
 
@@ -1487,15 +784,11 @@
                 <div class="day">
 
                     <div class="day-title">
-
-                        <h3>
-                            Lundi
-                        </h3>
+                        <h3>Lundi</h3>
 
                         <span class="day-number">
                             01
                         </span>
-
                     </div>
 
 
@@ -1515,11 +808,11 @@
                     <div class="mobile-item">
 
                         <div class="mobile-time">
-                            15h - 17h
+                            17h - 19h
                         </div>
 
                         <div class="mobile-content subject">
-                            Algorithme
+                            Algorithme 1
                         </div>
 
                     </div>
@@ -1527,21 +820,16 @@
                 </div>
 
 
-
                 <!-- MARDI -->
 
                 <div class="day">
 
                     <div class="day-title">
-
-                        <h3>
-                            Mardi
-                        </h3>
+                        <h3>Mardi</h3>
 
                         <span class="day-number">
                             02
                         </span>
-
                     </div>
 
 
@@ -1586,21 +874,16 @@
                 </div>
 
 
-
                 <!-- MERCREDI -->
 
                 <div class="day">
 
                     <div class="day-title">
-
-                        <h3>
-                            Mercredi
-                        </h3>
+                        <h3>Mercredi</h3>
 
                         <span class="day-number">
                             03
                         </span>
-
                     </div>
 
 
@@ -1645,21 +928,16 @@
                 </div>
 
 
-
                 <!-- JEUDI -->
 
                 <div class="day">
 
                     <div class="day-title">
-
-                        <h3>
-                            Jeudi
-                        </h3>
+                        <h3>Jeudi</h3>
 
                         <span class="day-number">
                             04
                         </span>
-
                     </div>
 
 
@@ -1704,21 +982,16 @@
                 </div>
 
 
-
                 <!-- VENDREDI -->
 
                 <div class="day">
 
                     <div class="day-title">
-
-                        <h3>
-                            Vendredi
-                        </h3>
+                        <h3>Vendredi</h3>
 
                         <span class="day-number">
                             05
                         </span>
-
                     </div>
 
 
@@ -1750,21 +1023,16 @@
                 </div>
 
 
-
                 <!-- SAMEDI -->
 
                 <div class="day">
 
                     <div class="day-title">
-
-                        <h3>
-                            Samedi
-                        </h3>
+                        <h3>Samedi</h3>
 
                         <span class="day-number">
                             06
                         </span>
-
                     </div>
 
 
@@ -1781,7 +1049,6 @@
                     </div>
 
                 </div>
-
 
 
                 <!-- DIMANCHE -->
@@ -1789,15 +1056,11 @@
                 <div class="day">
 
                     <div class="day-title">
-
-                        <h3>
-                            Dimanche
-                        </h3>
+                        <h3>Dimanche</h3>
 
                         <span class="day-number">
                             07
                         </span>
-
                     </div>
 
 
@@ -1815,63 +1078,39 @@
 
                 </div>
 
-
             </div>
 
 
-
-            <!-- =================================================
-                 LEGENDE
-            ================================================== -->
+            <!-- LÉGENDE -->
 
             <div class="legend">
 
                 <div class="legend-item">
-
                     <span class="dot dot-subject"></span>
-
                     Matière
-
                 </div>
 
-
                 <div class="legend-item">
-
                     <span class="dot dot-group"></span>
-
                     Travail de groupe
-
                 </div>
 
-
                 <div class="legend-item">
-
                     <span class="dot dot-free"></span>
-
                     Libre
-
                 </div>
 
             </div>
 
-
         </section>
 
 
-
-        <!-- FOOTER -->
-
         <footer>
-
             SIMAC · Groupe 1 · 2025 - 2026
-
         </footer>
-
 
     </main>
 
-
 </body>
-
 </html>
-
+```
